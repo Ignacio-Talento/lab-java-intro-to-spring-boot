@@ -23,7 +23,7 @@ public class EmployeeControler implements IEmployeeControler {
         return employeeRepository.findAll();
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/employees/id/{id}")
     public Employee getEmployeeById(@PathVariable Long id) {
         Optional<Employee> employeeOptional = employeeRepository.findById(id);
         if (employeeOptional.isPresent()) {
@@ -33,12 +33,12 @@ public class EmployeeControler implements IEmployeeControler {
         }
     }
 
-    @GetMapping("/employees/{status}")
+    @GetMapping("/employees/status/{status}")
     public List<Employee> getEmployeesByStatus(@PathVariable String status) {
         return employeeRepository.findByStatus(status);
     }
 
-    @GetMapping("/employees/{department}")
+    @GetMapping("/employees/department/{department}")
     public List<Employee> getEmployeesByDepartment(@PathVariable String department) {
         return employeeRepository.findByDepartment(department);
     }

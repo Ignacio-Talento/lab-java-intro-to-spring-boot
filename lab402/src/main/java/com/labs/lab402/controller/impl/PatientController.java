@@ -38,10 +38,8 @@ public class PatientController implements IPatientController {
     }
 
     @GetMapping("/patients/dob")
-    public List<Patient> getPatientsByDateOfBirthRange(@PathVariable String start, String end) {
-        LocalDate startDate = LocalDate.parse(start);
-        LocalDate endDate = LocalDate.parse(end);
-        List<Patient> patients = patientRepository.findByDateOfBirthBetween(startDate, endDate);
+    public List<Patient> getPatientsByDateOfBirthRange(@PathVariable LocalDate start, LocalDate end) {
+        List<Patient> patients = patientRepository.findByDateOfBirthBetween(start, end);
         return patients;
     }
 
@@ -51,8 +49,8 @@ public class PatientController implements IPatientController {
         return patients;
     }
 
-    @GetMapping("/parients/admitted-by/status/OFF")
-    public List<Patient> getPatientsByDoctorStatusOFF(@PathVariable String status) {
+    @GetMapping("/patients/admitted-by/status/OFF")
+    public List<Patient> getPatientsByDoctorStatusOFF() {
         List<Patient> patients = patientRepository.findByAdmittedBy_Status("OFF");
         return patients;
     }
